@@ -1,5 +1,6 @@
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
+import { OvenLoop } from './components/OvenLoop'
 import { SignaturePizzas } from './components/SignaturePizzas'
 import { PizzaBuilder } from './components/PizzaBuilder'
 import { Story } from './components/Story'
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <OvenLoop />
         <SignaturePizzas />
         <PizzaBuilder />
         <Story />
