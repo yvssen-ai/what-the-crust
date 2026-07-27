@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
-import { ScrollVideo } from './ScrollVideo'
-import heroVideoMp4 from '../assets/video/oven-bake.mp4'
-import heroVideoWebm from '../assets/video/oven-bake.webm'
-import heroPoster from '../assets/video/oven-bake-poster.jpg'
+import heroVideoMp4 from '../assets/video/cheese-pull.mp4'
+import heroVideoWebm from '../assets/video/cheese-pull.webm'
+import heroPoster from '../assets/video/cheese-pull-poster.jpg'
 
 const toppings = [
   { icon: '🍅', from: { x: -160, y: -120 }, settle: { x: -120, y: -40 }, delay: 0.4, rotate: -18 },
@@ -12,20 +11,27 @@ const toppings = [
   { icon: '🫒', from: { x: 0, y: -200 }, settle: { x: 10, y: -120 }, delay: 1.0, rotate: 8 },
 ]
 
+const prefersReducedMotion =
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
 export function Hero() {
   return (
     <section
       id="top"
       className="relative flex min-h-[100svh] items-end overflow-hidden bg-crust-black pt-24"
     >
-      <ScrollVideo
-        sources={[
-          { src: heroVideoMp4, type: 'video/mp4' },
-          { src: heroVideoWebm, type: 'video/webm' },
-        ]}
+      <video
+        autoPlay={!prefersReducedMotion}
+        muted
+        loop
+        playsInline
         poster={heroPoster}
         className="absolute inset-0 h-full w-full object-cover object-center opacity-70"
-      />
+        aria-hidden="true"
+      >
+        <source src={heroVideoMp4} type="video/mp4" />
+        <source src={heroVideoWebm} type="video/webm" />
+      </video>
       <div className="absolute inset-0 bg-gradient-to-t from-crust-black via-crust-black/60 to-crust-black/20" />
       <div className="absolute inset-0 bg-gradient-to-r from-crust-black/70 via-transparent to-crust-black/40" />
 
