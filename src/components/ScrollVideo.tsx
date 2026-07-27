@@ -44,7 +44,6 @@ export function ScrollVideo({ sources, poster, className }: ScrollVideoProps) {
       idleTimer = window.setTimeout(() => video.pause(), 220)
     }
 
-    playWhileScrolling()
     window.addEventListener('scroll', playWhileScrolling, { passive: true })
 
     return () => {

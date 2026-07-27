@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
-import heroImage from '../assets/images/hero-oven.jpg'
+import { ScrollVideo } from './ScrollVideo'
+import heroVideoMp4 from '../assets/video/oven-bake.mp4'
+import heroVideoWebm from '../assets/video/oven-bake.webm'
+import heroPoster from '../assets/video/oven-bake-poster.jpg'
 
 const toppings = [
   { icon: '🍅', from: { x: -160, y: -120 }, settle: { x: -120, y: -40 }, delay: 0.4, rotate: -18 },
@@ -15,11 +18,13 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[100svh] items-end overflow-hidden bg-crust-black pt-24"
     >
-      <img
-        src={heroImage}
-        alt="Wood-fired pizza fresh from the oven"
-        className="absolute inset-0 h-full w-full object-cover object-[center_35%] opacity-70"
-        fetchPriority="high"
+      <ScrollVideo
+        sources={[
+          { src: heroVideoMp4, type: 'video/mp4' },
+          { src: heroVideoWebm, type: 'video/webm' },
+        ]}
+        poster={heroPoster}
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-70"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-crust-black via-crust-black/60 to-crust-black/20" />
       <div className="absolute inset-0 bg-gradient-to-r from-crust-black/70 via-transparent to-crust-black/40" />
